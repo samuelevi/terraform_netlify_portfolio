@@ -5,123 +5,11 @@ A modern Infrastructure as Code project that deploys a static website to Netlify
 ## 🚀 Live Demo
 *Your live site URL will appear here after deployment*
 
-## 📋 Prerequisites
-
-Before you begin, ensure you have:
-
-1. **Terraform installed** (v1.0+)
-   ```bash
-   # On macOS
-   brew install terraform
-   
-   # On Windows (using Chocolatey)
-   choco install terraform
-   
-   # On Linux (Ubuntu/Debian)
-   wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-   echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-   sudo apt update && sudo apt install terraform
-   ```
-
-2. **Netlify Account & Personal Access Token**
-   - Sign up at [netlify.com](https://netlify.com)
-   - Go to [User Settings > Applications](https://app.netlify.com/user/applications)
-   - Generate a "Personal Access Token"
-   - Save the token (starts with `nfp_`)
-
-3. **HCP Terraform Account**
-   - Sign up at [app.terraform.io](https://app.terraform.io)
-   - Create an organization (or use existing)
-   - Create a workspace for this project
-
 ## 🛠️ Setup Instructions
 
 ### Step 1: Clone/Download Project Files
 
 Create a new directory and add all the project files:
-
-```bash
-mkdir terraform-netlify-challenge
-cd terraform-netlify-challenge
-```
-
-### Step 2: Configure Your Settings
-
-1. **Copy `terraform.tfvars.example` to `terraform.tfvars`**:
-   ```bash
-   cp terraform.tfvars.example terraform.tfvars
-   ```
-
-2. **Edit `terraform.tfvars`** with your settings:
-   ```hcl
-   # Site configuration
-   site_name = "my-terraform-challenge"
-   site_directory = "./site"
-   
-   # HCP Terraform configuration
-   hcp_organization = "YOUR_HCP_ORG_NAME"
-   hcp_workspace = "YOUR_WORKSPACE_NAME"
-   
-   # Optional: Custom domain (leave empty for Netlify subdomain)
-   custom_domain = ""
-   ```
-
-3. **Update `main.tf`** cloud block with your HCP details:
-   ```hcl
-   cloud {
-     organization = "YOUR_HCP_ORG_NAME"
-     
-     workspaces {
-       name = "YOUR_WORKSPACE_NAME"
-     }
-   }
-   ```
-
-### Step 3: Configure HCP Terraform Workspace
-
-1. **Log in to HCP Terraform**: https://app.terraform.io
-2. **Navigate to your workspace**: `Your-Org` → `Your-Workspace`
-3. **Go to Variables tab**
-4. **Add Environment Variable**:
-   - Click "Add variable"
-   - Type: "Environment variable"
-   - Key: `NETLIFY_TOKEN`
-   - Value: `your-netlify-personal-access-token`
-   - Mark as "Sensitive" ✓
-   - Save
-
-### Step 4: Authenticate Terraform
-
-```bash
-# Authenticate with HCP Terraform
-terraform login
-```
-
-This will:
-- Open your browser to generate an API token
-- Save the token locally for Terraform CLI
-
-### Step 5: Deploy Your Site
-
-```bash
-# Initialize Terraform (connects to HCP backend)
-terraform init
-
-# Review what will be created
-terraform plan
-
-# Deploy the infrastructure
-terraform apply
-```
-
-Type `yes` when prompted to confirm the deployment.
-
-### Step 6: Access Your Live Site
-
-After successful deployment, Terraform will output:
-- `site_url`: Your live Netlify site URL
-- `admin_url`: Netlify admin panel URL
-- `ssl_url`: HTTPS URL of your site
 
 ## 📁 Project Structure
 
@@ -189,18 +77,6 @@ Type `yes` when prompted.
 
 4. **Workspace not found**
    - Verify organization and workspace names in both `main.tf` and `terraform.tfvars`
-
-## 📝 Challenge Requirements Checklist
-
-- ✅ Deploy static site on Netlify using Terraform
-- ✅ Store state remotely in HCP Terraform
-- ✅ Re-runnable with fresh credentials
-- ✅ All secrets kept out of repository
-- ✅ Providers configuration (Netlify, Random)
-- ✅ Resources to create the site
-- ✅ Variables for custom inputs
-- ✅ Outputs (live site URL)
-- ✅ Comprehensive documentation
 
 ## 🤝 Contributing
 
