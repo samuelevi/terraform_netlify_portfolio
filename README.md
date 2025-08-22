@@ -5,11 +5,98 @@ A modern Infrastructure as Code project that deploys a static website to Netlify
 ## 🚀 Live Demo
 *Your live site URL will appear here after deployment*
 
+## 📋 Prerequisites
+
+Before you begin, ensure you have:
+
+1. **Terraform installed** (v1.0+)
+   ```bash
+   # On macOS
+   brew install terraform
+   
+   # On Windows (using Chocolatey)
+   choco install terraform
+   
+
+2. **Netlify Account & Personal Access Token**
+   - Sign up at [netlify.com](https://netlify.com)
+   - Go to [User Settings > Applications](https://app.netlify.com/user/applications)
+   - Generate a "Personal Access Token"
+   - Save the token (starts with `nfp_`)
+
+3. **HCP Terraform Account**
+   - Sign up at [app.terraform.io](https://app.terraform.io)
+   - Create an organization (or use existing)
+   - Create a workspace for this project
+
 ## 🛠️ Setup Instructions
 
 ### Step 1: Clone/Download Project Files
 
 Create a new directory and add all the project files:
+
+```bash
+mkdir terraform-netlify-challenge
+cd terraform-netlify-challenge
+```
+
+### Step 2: Configure Your Settings
+
+**Update `main.tf`** cloud block with your HCP details:
+   ```hcl
+   cloud {
+     organization = "YOUR_HCP_ORG_NAME"
+     
+     workspaces {
+       name = "YOUR_WORKSPACE_NAME"
+     }
+   }
+   ```
+
+### Step 3: Configure HCP Terraform Workspace
+
+1. **Log in to HCP Terraform**: https://app.terraform.io
+2. **Navigate to your workspace**: `Your-Org` → `Your-Workspace`
+3. **Go to Variables tab**
+4. **Add Environment Variable**:
+   - Click "Add variable"
+   - Type: "Environment variable"
+   - Key: `NETLIFY_TOKEN`
+   - Value: `your-netlify-personal-access-token`
+   - Mark as "Sensitive" ✓
+   - Save
+
+### Step 4: Authenticate Terraform
+
+```bash
+# Authenticate with HCP Terraform
+terraform login
+```
+
+This will:
+- Open your browser to generate an API token
+- Save the token locally for Terraform CLI
+
+### Step 5: Deploy Your Site
+
+```bash
+# Initialize Terraform (connects to HCP backend)
+terraform init
+
+# Review what will be created
+terraform plan
+
+# Deploy the infrastructure
+terraform apply
+```
+
+Type `yes` when prompted to confirm the deployment.
+
+### Step 6: Access Your Live Site
+
+After successful deployment, Terraform will output:
+- `site_url`: Your live Netlify site URL
+- `admin_url`: Netlify admin panel URL
 
 ## 📁 Project Structure
 
@@ -43,16 +130,6 @@ terraform-netlify-challenge/
 - Set `custom_domain` in `terraform.tfvars`
 - Configure DNS to point to Netlify
 - Run `terraform apply`
-
-## 🧹 Cleanup
-
-To destroy all resources:
-
-```bash
-terraform destroy
-```
-
-Type `yes` when prompted.
 
 ## 🔒 Security Features
 
