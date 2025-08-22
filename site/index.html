@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraForm Challenge - Infrastructure as Code</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <span>TerraChallenge</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About Me</a>
+                    <a href="#tech" class="nav-link">Tech Stack</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>Deployed with Terraform & HCP</span>
+                </div>
+                <h1 class="hero-title">
+                    Infrastructure as Code
+                    <span class="gradient-text">Made Simple</span>
+                </h1>
+                <p class="hero-description">
+                    Experience the power of Terraform with HCP remote state management. 
+                    This site demonstrates automated deployment to Netlify using infrastructure as code principles.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="deployAnimation()">
+                        <i class="fas fa-play"></i>
+                        Watch Deploy
+                    </button>
+                    <a href="https://github.com" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        View Code
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-title">main.tf</span>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="code-keyword">resource</span> 
+                            <span class="code-string">"netlify_site"</span> 
+                            <span class="code-string">"main"</span> {
+                        </div>
+                        <div class="code-line">
+                            &nbsp;&nbsp;<span class="code-property">name</span> = <span class="code-string">"terraform-challenge"</span>
+                        </div>
+                        <div class="code-line">
+                            &nbsp;&nbsp;<span class="code-property">dir</span> = <span class="code-string">"./site"</span>
+                        </div>
+                        <div class="code-line">}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About secttion -->
+
+        <section class="about" id="about">
+
+            <h1 class="heading"> <span>about</span> me</h1>
+
+            <div class="row">
+
+                <div class="image" data-testid="slackProfilePicture">
+                    <img src="./assets/images/unnamed.png" alt="mine">
+                </div>
+
+                <div class="content">
+                    <h3>A Brief Introduction</h3>
+                    <p>My name is Samuel Evi, A Cloud Engineer and I'm a frontend developer with a passion for building innovative and user-friendly interfaces. When I'm not coding, you can find me curled up with a good book, as reading is my favorite way to unwind and expand my knowledge. I'm a curious and determined individual who values continuous learning and growth. My goal is to create impactful digital experiences that make a difference in people's lives. I'm excited to connect with like-minded individuals and explore new opportunities in the tech world."</p>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About section ended quickly -->
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2>Challenge Features</h2>
+                <p>Built with modern DevOps practices and cloud-native technologies</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>HCP Terraform</h3>
+                    <p>Remote state management with HashiCorp Cloud Platform for team collaboration and security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Netlify Hosting</h3>
+                    <p>Lightning-fast global CDN deployment with automatic HTTPS and continuous deployment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Infrastructure as Code</h3>
+                    <p>Reproducible, version-controlled infrastructure using Terraform's declarative syntax.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Secrets</h3>
+                    <p>All sensitive data managed through HCP Terraform workspace variables, never in code.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech" class="tech-stack">
+            <div class="section-header">
+                <h2>Technology Stack</h2>
+                <p>Modern tools for modern infrastructure</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fas fa-cube"></i>
+                    <span>Terraform</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cloud"></i>
+                    <span>HCP Terraform</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Netlify</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="logo">
+                        <i class="fas fa-cube"></i>
+                        <span>TerraChallenge</span>
+                    </div>
+                    <p>Built with ❤️ for the HUG Ibadan Terraform Challenge</p>
+                </div>
+                <div class="footer-right">
+                    <div class="deploy-status" id="deployStatus">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Deployed Successfully</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
+
